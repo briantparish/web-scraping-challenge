@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Information!</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="container text-center">
+    <h1 class="jumbotron">Mars Information</h1>
+    
+    <h4>
+        Mars News: {{mars['News title']}}
+    </h4>  
+    <h5>
+        {{mars['News Paragraph']}}
+    </h5>
+    <div>
+        <img style="max-width:100%"  src= "{{mars['Mars Image']}}"> 
+    </div>
+    <h3>
+        Weather on Mars:
+    </h3>
+    <H6>
+        {{mars['Weather']}}
+    </H6>
+    <h3>
+        Mars Facts
+    </h3>
+    <table class="center;">
+        {% for key, value in mars['Mars facts'].items() %}
+           <tr>
+                <th> {{ key }} </th>
+                <td> {{ value }} </td>
+           </tr>
+        {% endfor %}
+    </table>
+    <h3>Mars Hemisphere Pictures</h3>
+    <div>
+        {% for image in mars.hemispheres:%}
+        <div>
+            <a href = "{{image['img_url']}}">{{image.title}}</a>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+</body>
+
+</html>
