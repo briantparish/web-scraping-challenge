@@ -29,7 +29,6 @@ def scrape():
     latest_news = all_news[0]
     latest_title = latest_news.find('div', class_='content_title').text
     latest_para = latest_news.find('div', class_='article_teaser_body').text
-    print(f"Title: {latest_title}\nBody: {latest_para}")
 
     #Find image of Mars
     url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
@@ -50,11 +49,9 @@ def scrape():
 
     # Find the link to the main_image class for the .jpg file
     main_image = soup.find('img', class_='main_image')
-    main_image['src']
 
     #Get the full URL for the main image
     main_image = f"https://www.jpl.nasa.gov/{main_image['src']}"
-    print(f"Image of mars: {main_image}")
 
     # ### Find the weather on Mars with Twitter
 
@@ -66,8 +63,6 @@ def scrape():
     for tweet in tweets:
         tweet_id = tweet['data-item-id']
         tweet_text = tweet.select('p.tweet-text')[0].get_text()
-
-    print(f"Tweet Text: {tweet_text}")
 
     #Get Mars Facts into dataframe
     url = 'https://space-facts.com/mars/'
@@ -100,11 +95,8 @@ def scrape():
         try:
             url = f"https://astrogeology.usgs.gov{links[link]['href']}"
             response = requests.get(url)
-            print(url)
             name = url.split("/")[7]
             name = name.split("_")[0]
-            print(name)
-            print(response)
             time.sleep(1)
             soup = BeautifulSoup(response.text,"html.parser")
             downloads = soup.find('div',class_="downloads")
