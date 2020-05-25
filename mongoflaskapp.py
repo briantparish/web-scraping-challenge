@@ -9,14 +9,16 @@ client = pymongo.MongoClient(conn)
 
 # Define the 'mars_info' database in Mongo
 db = client.mars_info
+# Define collection 'mars'
 col = db.mars
+
+mars_info = scrape_mars.scrape()
+col.insert_one(mars_info)
 
 # Set route
 @app.route('/scrape')
 def scrape():
    
-    #mars_info = scrape_mars.scrape()
-    #col.insert_one(mars_info)
     mars_data = col.find_one()
 
     # Return the template with the teams list passed in
