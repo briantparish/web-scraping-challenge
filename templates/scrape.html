@@ -32,7 +32,7 @@
     <h3>
         Mars Facts
     </h3>
-    <table class="center;">
+    <table class="table table-striped;">
         {% for key, value in mars['Mars facts'].items() %}
            <tr>
                 <th> {{ key }} </th>
@@ -40,7 +40,7 @@
            </tr>
         {% endfor %}
     </table>
-    <h3>Download Mars Hemisphere Pictures</h3>
+    <h3>Mars Hemisphere Pictures</h3>
     <div>
         {% for image in mars.hemispheres:%}
         <div>
